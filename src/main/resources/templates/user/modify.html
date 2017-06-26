@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Modify</title>
+</head>
+<body>
+<h1>Modify a user</h1>
+
+<table>
+    <tbody>
+        <tr>
+            <td>Name</td>
+            <td>
+                <input type="text" id="name" name="name" th:value="${user.name}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td>
+                <input type="text" id="age" name="age" th:value="${user.age}"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="button" value="Modify" id="btnModify" />
+            </td>
+            <td>
+                <input type="reset" value="Reset"/>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        var id =/*[[${user.id}]]*/;
+
+        //<![CDATA[
+        $("#btnModify").click(function () {
+            var _data = {};
+            _data.id = id;
+            _data.name = $('#name').val();
+            _data.age = $('#age').val();
+
+            $.ajax({
+                type: 'put',
+                url: '/user/' + id,
+                data: JSON.stringify(_data),
+                contentType: "application/json",
+                success: function (data) {
+                    console.debug(data);
+                },
+                error: function (data, status, er) {
+                    console.debug("error: "+data+" status: "+status+" er:"+er);
+                }
+            });
+        });
+        //]]>
+    });
+</script>
+
+
+
+</body>
+</html>

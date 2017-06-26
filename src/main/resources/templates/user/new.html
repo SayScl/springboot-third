@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>New</title>
+</head>
+<body>
+<h1>New a user</h1>
+
+<form action="/user" method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td>
+                    <input type="text" name="name"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Age</td>
+                <td>
+                    <input type="text" name="age"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="New" />
+                </td>
+                <td>
+                    <input type="reset" value="Reset"/>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</form>
+
+</body>
+</html>
